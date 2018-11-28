@@ -2,9 +2,9 @@ from fastkml import kml
 from shapely.geometry import Point, Polygon
 import pandas as pd
 
-KML_FILE = 'wards.kml'
-TERMINAL_FILE = 'terminals.csv'
-OUTPUT_FILE = 'terminals_and_wards.csv'
+KML_FILE = './data/wards.kml'
+TERMINAL_FILE = './data/terminals.csv'
+OUTPUT_FILE = './data/terminals_and_wards.csv'
 
 def initialize_wards(filename):
     """
@@ -29,7 +29,6 @@ def initialize_wards(filename):
 
     return wards
 
-
 def which_ward(wards, lat, lng):
     """
     Takes the `wards` list, and the `lat`/`lng` of the terminal, outputs
@@ -45,8 +44,7 @@ def which_ward(wards, lat, lng):
         if bike_terminal.within(ward.geometry):
             return ward.name.split()[-1]  # Assumes it'll only fit into _one_ ward
 
-
-
+# Run the script
 ward_list = initialize_wards(KML_FILE)
 df = pd.read_csv(TERMINAL_FILE)
 df['Ward'] = df.apply(lambda row: which_ward(ward_list, row['Latitude'], row['Longitude']), axis=1)
