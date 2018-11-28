@@ -1,0 +1,17 @@
+# Base package requirements
+fastkml
+shapely
+lxml
+pygeoif
+python-dateutil
+
+
+# Testing Requirements
+pytest
+pep8
+coveralls
+tox>=1.8
+
+# Documentation Requirements
+Sphinx
+sphinx-rtd-theme
